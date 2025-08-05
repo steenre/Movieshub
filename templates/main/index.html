@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="search">
+    <div>
+        <form action="" method="get">
+              <input type="search" id="searchInput" name="query" placeholder="Search movies...">
+          <button type="submit">Search</button>
+    </div>
+    </form>
+
+</div>
+    {% if movies %}
+    <div class="movies">
+        {% for movie in movies %}
+        <a href="{% url 'movie' movie.id %}">
+            <div class="movie">
+                <img src="{{movie.medium_cover_image}}" alt="">
+                <div>
+                    <h4 class="title">{{movie.title}} ({{movie.year}})</h4>
+                    <p class="rating">Rating : {{movie.rating}} / 10</p>
+                </div>
+
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    {% else %}
+    No movies!
+    {% endif %}
+{% endblock %}

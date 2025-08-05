@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{title}}{% endblock %} | Hexadecimal Movies</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h2>Hexadecimal Movies</h2>
+    </header>
+    <nav>
+        <ul>
+            <a href="{% url 'landing' %}">
+                <li>Home</li>
+            </a>
+            <a href="">
+                <li>Holy</li>
+            </a>
+            <a href="">
+                <li>Siet</li>
+            </a>
+            <a href="">
+                <li></li>
+            </a>
+        </ul>
+    </nav>
+        <div class="spinner-wrapper">
+            <div class="spinner">
+
+            </div>
+            <p>please wait...</p>
+        </div>
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <script>
+        // let container = document.querySelector('.container')
+        
+        window.addEventListener('load', ()=>{
+            let container = document.querySelector('.container')
+            let spinner = document.querySelector('.spinner-wrapper');
+            if(spinner){
+                container.style.opacity = 'unset';
+                spinner.style.display = 'none';
+            }
+        })
+    </script>
+</body>
+</html>

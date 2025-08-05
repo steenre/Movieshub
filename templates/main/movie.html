@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{movie.title}}{% endblock %}
+{% block content %}
+<div class="movie-wrapper">
+    <div class="movie">
+        <img src="{{movie.medium_cover_image}}" alt="">
+        <div>
+            <h3>{{movie.title}} ({{movie.year}})</h3>
+            <p>{{movie.description_full}}</p>
+            <hr>
+            <h3>Download Links:</h3>
+            {% for torrent in movie.torrents %}
+                <div class="torrent">
+                    <a href="{{torrent.url}}" target="_blank">{{torrent.quality}} - {{torrent.size}}</a>
+                </div>
+            {% endfor %}            
+        </div>
+    </div>
+</div>
+{% endblock %}
